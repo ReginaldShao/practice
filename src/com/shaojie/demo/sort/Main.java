@@ -16,42 +16,40 @@ public class Main {
 		sms.add(new InsertionSort());
 		sms.add(new QuickSort());
 		sms.add(new HeapSort());
+		sms.add(new CountingSort());
 		
 		for(SortMethod sm : sms) {
-			System.err.println(sm.getMethodName()+"-----sort: ------");
+			System.err.println(sm.getMethodName()+":");
 			//sort
 			data = generateData(SIZE);
 			long st = System.currentTimeMillis();
 			sm.sort(data);
-			System.out.println("sort time:"+(System.currentTimeMillis() - st));
+			System.err.println("sort time:"+(System.currentTimeMillis() - st));
 			printData(data);
 			
-			//reverse
-			data = generateData(SIZE);
-			System.out.println("reverse sort:");
-			st = System.currentTimeMillis();
-			sm.reverseSort(data);
-			System.out.println("end reverse time:"+(System.currentTimeMillis() - st));
-			printData(data);
+//			//reverse
+//			data = generateData(SIZE);
+//			System.out.println("reverse sort:");
+//			st = System.currentTimeMillis();
+//			sm.reverseSort(data);
+//			System.out.println("end reverse time:"+(System.currentTimeMillis() - st));
+//			printData(data);
 			
-			System.err.println("-----end-----");
+			System.err.println("-----end-----\n");
 		}
 	}
 
 	public static int[] generateData(int num) {
 		Random rand = new Random(47);
 		int[] data = new int[num];
-		System.out.println();
 		for(int k=0;k<num;k++) {
 			data[k]=rand.nextInt(num);
 		}
 		return data;
 	}
 	public static void printData(int[] data) {
-		System.out.println("print data:");
 		for(int d : data) {
 			System.out.print(d + " ");
 		}
-		System.out.println("------");
 	}
 }
