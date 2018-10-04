@@ -15,6 +15,7 @@ public class Main {
 		sms.add(new SelectSort());
 		sms.add(new InsertionSort());
 		sms.add(new QuickSort());
+		sms.add(new HeapSort());
 		
 		for(SortMethod sm : sms) {
 			System.err.println(sm.getMethodName()+"-----sort: ------");
