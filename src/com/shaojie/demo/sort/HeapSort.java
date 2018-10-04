@@ -23,19 +23,14 @@ public class HeapSort implements SortMethod {
 		//一个节点i的左子节点：2*i+1
 		//一个节点i的右子节点：2*i+2
 		//一个节点i的父节点：  (i-1)/2
-//		System.out.println("---------make heap begin-------");
 		for(int k=e;k>0;k--) {
-//			System.out.print("k="+k);
-			int parent = (k-1)/2;
-//			System.out.print(",parent="+parent);
+			int parent = k>>1;//(k-1)/2
 			if(data[k]>data[parent]) {
 				int tmp = data[parent];
 				data[parent] = data[k];
 				data[k] = tmp;
 			}
 		}
-//		System.out.println("---------make heap end-------");
-//		Main.printData(data);
 	}
 	@Override
 	public int[] reverseSort(int[] data) {
