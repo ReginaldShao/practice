@@ -1,0 +1,69 @@
+1:	package com.shaojie.demo.io;
+2:	
+3:	import java.io.File;
+4:	import java.io.FilenameFilter;
+5:	import java.util.Arrays;
+6:	import java.util.regex.Pattern;
+7:	import static com.shaojie.demo.util.Print.*;
+8:	
+9:	public class SortDirList {
+10:		public static void main(String[] args) {
+11:			SortDirList sdl = new SortDirList(".");
+12:			for(String i: sdl.list()) {
+13:				print(i+" ");
+14:			}
+15:			print("\n...........\n");
+16:			println("size:");
+17:			print(sdl.size());
+18:			println();
+19:			
+20:			for(String i: sdl.list("set")) {
+21:				print(i+" ");
+22:			}
+23:			print("\n...........\n");
+24:			println("size:");
+25:			print(sdl.size("set"));
+26:			
+27:		}
+28:		
+29:		private File dir;
+30:		public SortDirList(String dir) {
+31:			this.dir = new File(dir);
+32:		}
+33:		
+34:		public String[] list() {
+35:			String[] list = dir.list();
+36:			Arrays.sort(list, String.CASE_INSENSITIVE_ORDER);
+37:			return list;
+38:		}
+39:		
+40:		public String[] list(String regex) {
+41:			String[] list = dir.list(filter(regex));
+42:			Arrays.sort(list, String.CASE_INSENSITIVE_ORDER);
+43:			return list;
+44:		}
+45:		
+46:		public long size(String regex) {
+47:			long size = 0;
+48:			for(File f : dir.listFiles(filter(regex))) {
+49:				size += f.length();
+50:			}
+51:			return size;
+52:		}
+53:		public long size() {
+54:			long size = 0;
+55:			for(File f : dir.listFiles()) {
+56:				size += f.length();
+57:			}
+58:			return size;
+59:		}
+60:		private static FilenameFilter filter(String regex) {
+61:			return new FilenameFilter() {
+62:				private Pattern pattern = Pattern.compile(regex);
+63:				@Override
+64:				public boolean accept(File dir, String name) {
+65:					return pattern.matcher(name).find();
+66:				}
+67:			};
+68:		}
+69:	}
