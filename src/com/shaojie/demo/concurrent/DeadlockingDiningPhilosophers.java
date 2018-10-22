@@ -10,10 +10,11 @@ public class DeadlockingDiningPhilosophers {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		int ponder = 0;
-		if(args.length>0)
+		if(args.length>0) {
 			ponder = Integer.parseInt(args[0]);
+		}
 		int size = 5;
-		if(args.length>1){
+		if(args.length>1) {
 			size = Integer.parseInt(args[1]);
 		}
 		ExecutorService exec = Executors.newCachedThreadPool();
