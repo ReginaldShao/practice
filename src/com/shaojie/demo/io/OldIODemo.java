@@ -36,7 +36,7 @@ public class OldIODemo {
 
 }
 
-class ConnectIOnHandler extends Thread {
+class ConnectIOnHandler implements Runnable {
 	private Socket socket;
 
 	public ConnectIOnHandler(Socket socket) {
