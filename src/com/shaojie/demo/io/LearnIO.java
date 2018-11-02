@@ -1,24 +1,8 @@
 package com.shaojie.demo.io;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.Writer;
+import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
+
+import java.io.*;
 import java.nio.CharBuffer;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -30,6 +14,9 @@ import static com.shaojie.demo.util.Print.*;
 public class LearnIO {
 
 	public static void main(String[] args) {
+		ByteOutputStream bos = new ByteOutputStream();
+		PipedWriter pw = new PipedWriter();
+		PipedReader pr = new PipedReader();
 		String file = "/home/shaojie/workspace/demo/src/com/shaojie/demo/io/SortDirList.java";
 		printWriter(file);
 //		memoryInput(file);
